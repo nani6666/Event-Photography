@@ -1,25 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Slider } from 'ngx-slider';
 @Component({
-  selector: 'app-imagelightbox',
-  templateUrl: './imagelightbox.component.html',
-  styleUrls: ['./imagelightbox.component.css']
+  selector: 'app-folders',
+  templateUrl: './folders.component.html',
+  styleUrls: ['./folders.component.css']
 })
-export class ImagelightboxComponent implements OnInit {
-   imgArr: any;
-   modalImage: any;
-   public slider = new Slider();
-  constructor(private router: Router) {
-    this.slider.config.loop = true;
-    this.slider.config.showPreview = false;
-    this.slider.config.showDots = true;
-    this.slider.config.showNavigator = true;
-    this.imgArr = [
+export class FoldersComponent implements OnInit {
+   eventsArray: any ;
+   eventsection: boolean ;
+   gamesection: boolean ;
+   thumbnailsSection: boolean;
+   thumbnailsArray: any;
+   gameArray: any ;
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+    this.eventsection = true ;
+    this.gamesection = false ;
+    this.thumbnailsSection =  false ;
+    this.eventsArray = ['Cras justo odio' , 'Dapibus ac facilisis in' , 'Morbi leo risus' ,
+                         'Porta ac consectetur ac' , 'Vestibulum at eros' , '123 ac'];
+     this.gameArray = ['one' , 'two', 'three' , 'four' , 'five' , 'six'];
+     this.thumbnailsArray = [
       {
 
         'img': 'https://d21tktytfo9riy.cloudfront.net/wp-content/uploads/2016/02/09155708/AB2_gl_frg_optim.png',
-        'title': 'Angry Birds'
+        'title': 'Sunrise'
       }, {
         // tslint:disable-next-line:max-line-length
         'img': 'https://d2uqfpnktc64mn.cloudfront.net/uploads/ckeditor_assets/pictures/18430/content_c1-Image-by-Kilian-Schonberger-The-Bridge-Brothers-Grimm-Wanderings-series.jpg',
@@ -44,18 +50,30 @@ export class ImagelightboxComponent implements OnInit {
      ];
    }
 
-  ngOnInit() {
-    const slideItems = [];
-    this.imgArr.forEach(ele => {
-      slideItems.push({'src': ele.img , 'title': ele.title});
-    });
-
-    this.slider.items = slideItems;
-  }
-
-  lightbox(val) {
+   getevents() {
+    this.eventsection = true ;
+    this.gamesection = false ;
+    this.thumbnailsSection =  false ;
+   }
+   getgames(val) {
     console.log(val);
-    document.getElementById('gallery').click();
-   this.modalImage = val.img ;
+    this.eventsection = false ;
+    this.gamesection = true ;
+    this.thumbnailsSection =  false ;
+   }
+   getthumbanils(val) {
+    this.eventsection = false ;
+    this.gamesection = false ;
+    this.thumbnailsSection =  true ;
+   }
+
+   getImages(val) {
+    this.eventsection = false ;
+    this.gamesection = false ;
+    this.thumbnailsSection =  false ;
+   }
+
+  startnavigate() {
+    this.router.navigate(['/login']);
   }
 }

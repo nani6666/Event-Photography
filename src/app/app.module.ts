@@ -4,12 +4,14 @@ import { routing } from './app.routes';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SliderModule } from 'ngx-slider';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; // IMPORT THE SLIDESHOW MODULE
 import { AppComponent } from './app.component';
 import { ImagelightboxComponent } from './components/imagelightbox/imagelightbox.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { CartComponent } from './components/cart/cart.component';
+import { FoldersComponent } from './components/folders/folders.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { CartComponent } from './components/cart/cart.component';
     ImagelightboxComponent,
     LoginComponent,
     SignupComponent,
-    CartComponent
+    CartComponent,
+    FoldersComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { CartComponent } from './components/cart/cart.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule, HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    SliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

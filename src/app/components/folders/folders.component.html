@@ -1,0 +1,71 @@
+<div class="container-fluid">
+      <nav aria-label="breadcrumb " *ngIf="eventsection">
+        <ol class="breadcrumb arr-right">
+          <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()">Start</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Events</li>
+        </ol>
+      </nav>
+
+      <nav aria-label="breadcrumb " *ngIf="gamesection">
+        <ol class="breadcrumb arr-right">
+            <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()">Start</a></li>
+            <li class="breadcrumb-item active"><a class="text-primary" (click)="getevents()">Events</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Games</li>
+        </ol>
+      </nav>
+
+      <nav aria-label="breadcrumb " *ngIf="thumbnailsSection">
+          <ol class="breadcrumb arr-right">
+              <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()">Start</a></li>
+              <li class="breadcrumb-item active"><a class="text-primary" (click)="getevents()">Events</a></li>
+              <li class="breadcrumb-item active"><a class="text-primary" (click)="getgames(' ')">Games</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Thumbnails</li>
+          </ol>
+        </nav>
+<div class="row" *ngIf="!thumbnailsSection">
+  <div class="col-sm-2">
+
+  </div>
+  <div class="col-sm-8">
+  <div class="card">
+   <div class="card-body" >
+    <div style="height: 350px;overflow-y: auto;"  *ngIf="eventsection">
+        <h4 style="text-align:center;">Click a Event from List below</h4>
+        <ul class="list-group" *ngFor="let event of eventsArray">
+            <li class="list-group-item" (click)="getgames(event)">{{event}}</li>
+          </ul>
+    </div>
+    <div style="height: 350px;overflow-y: auto;"  *ngIf="gamesection">
+        <h4 style="text-align:center;">Click a Game from List below</h4>
+        <ul class="list-group" *ngFor="let game of gameArray">
+            <li class="list-group-item" (click)="getthumbanils(game)">{{game}}</li>
+          </ul>
+    </div>
+   </div>
+  </div>
+  </div>
+  <div class="col-sm-2">
+
+  </div>
+
+</div>
+<div class="card " *ngIf="thumbnailsSection">
+    <div class="card-body">
+      <h4 style="text-align:center;">Thumbnail Images</h4>
+        <div class="row">
+            <div class="col-sm-2" *ngFor="let imgs of thumbnailsArray; let j = index">
+              <div class="card" style="cursor:pointer;">
+                <img class="card-img-top img" src="{{imgs.img}}" alt="Card image cap">
+                <!-- <div class="card-body">
+                    <p class="card-text">{{imgs.title}}</p>
+                <div> -->
+                </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+</div>

@@ -1,3 +1,7 @@
+.list-group-item{
+  cursor:pointer;
+}
+
 img{
   width:100%;
 }
@@ -16,7 +20,16 @@ transform: scale(1.15);
 
 }
 
-.btn:focus,.btn:active:focus,.btn.active:focus,
-.btn.focus,.btn:active.focus,.btn.active.focus {
-    outline: none;
+.arr-right .breadcrumb-item+.breadcrumb-item::before {
+
+  content: "\00bb";
+
+  vertical-align:top;
+
+  color: #408080;
+
+  font-size:22px;
+
+  line-height:18px;
+
 }

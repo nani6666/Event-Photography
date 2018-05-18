@@ -22,9 +22,11 @@
     "@angular/router": "^6.0.2",
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "ng-slideshow": "^0.8.2",
     "ngx-lightbox": "^1.0.2",
+    "ngx-slider": "0.0.5",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

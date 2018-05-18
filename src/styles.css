@@ -1,1 +1,18 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+:-webkit-full-screen #myObject {
+  font-size: 20px;
+  width: 100%;
+}
+:-moz-full-screen #myObject {
+  font-size: 20px;
+  width: 100%;
+}
+
+a{
+  cursor: pointer;
+}
+
+.btn:focus,.btn:active:focus,.btn.active:focus,
+.btn.focus,.btn:active.focus,.btn.active.focus {
+    outline: none;
+}

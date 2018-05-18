@@ -80,3 +80,7 @@
   width: 69px;
   background: url("../../../assets/images/backspace.png") no-repeat center center;
 } */
+.btn:focus,.btn:active:focus,.btn.active:focus,
+.btn.focus,.btn:active.focus,.btn.active.focus {
+    outline: none;
+}
