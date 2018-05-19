@@ -23,8 +23,6 @@
               "src/assets"
             ],
             "styles": [
-              "../node_modules/font-awesome/css/font-awesome.min.css",
-              "./node_modules/ngx-lightbox/lightbox.css",
               "src/styles.css"
             ],
             "scripts": [

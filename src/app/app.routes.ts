@@ -14,7 +14,7 @@ import { FoldersComponent } from './components/folders/folders.component';
 
 // Route Configuration
 export const routes: Routes = [
-    { path: '', component: LoginComponent },
+    { path: '', component: ImagelightboxComponent },
     { path: 'login', component: LoginComponent },
     { path: 'event', component: ImagelightboxComponent },
     { path: 'cart', component: CartComponent },
