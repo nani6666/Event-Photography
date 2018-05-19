@@ -28,6 +28,7 @@
     "ngx-lightbox": "^1.0.2",
     "ngx-slider": "0.0.5",
     "rxjs": "^6.0.0",
+    "virtual-keyboard-plugin": "^1.2.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

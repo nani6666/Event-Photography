@@ -24,6 +24,17 @@
     e.preventDefault();
 }, false);
      $(function(){
+      $('body').keydown(function(e){
+    if (e.which==27){
+        alert("hh");
+    }
+
+     });
+     $('.fullscreen').click(function(){
+    var e=$.Event('keydown');
+    e.which=27;
+     $('body').trigger(e);
+      });
        $('#getStarted').click(function(){
         fullscreen();
        });
