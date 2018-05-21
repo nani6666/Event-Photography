@@ -10,14 +10,18 @@ export class FoldersComponent implements OnInit {
    eventsection: boolean ;
    gamesection: boolean ;
    thumbnailsSection: boolean;
+   imageSection: boolean;
    thumbnailsArray: any;
+   imgitem: any;
    gameArray: any ;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
     this.eventsection = true ;
     this.gamesection = false ;
     this.thumbnailsSection =  false ;
+    this.imageSection = false;
     this.eventsArray = ['Cras justo odio' , 'Dapibus ac facilisis in' , 'Morbi leo risus' ,
                          'Porta ac consectetur ac' , 'Vestibulum at eros' , '123 ac'];
      this.gameArray = ['one' , 'two', 'three' , 'four' , 'five' , 'six'];
@@ -54,23 +58,28 @@ export class FoldersComponent implements OnInit {
     this.eventsection = true ;
     this.gamesection = false ;
     this.thumbnailsSection =  false ;
+    this.imageSection = false;
    }
    getgames(val) {
     console.log(val);
     this.eventsection = false ;
     this.gamesection = true ;
     this.thumbnailsSection =  false ;
+    this.imageSection = false;
    }
    getthumbanils(val) {
     this.eventsection = false ;
     this.gamesection = false ;
     this.thumbnailsSection =  true ;
+    this.imageSection = false;
    }
 
    getImages(val) {
+     this.imgitem = val.img;
     this.eventsection = false ;
     this.gamesection = false ;
     this.thumbnailsSection =  false ;
+    this.imageSection = true;
    }
 
   startnavigate() {

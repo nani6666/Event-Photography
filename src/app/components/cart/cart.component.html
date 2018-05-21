@@ -1,3 +1,46 @@
-<p>
-  cart works!
-</p>
+
+<div class="container-fluid" >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <input class="navbar-brand fullscreen" type="image"  src="../../../assets/images/cropped-ops-logo-sml-cent-276x88.png" style="width:95px;height:45px;">
+        </nav>
+        <div class="card" *ngIf="!checkoutDiv">
+          <div class="card-body" >
+              <div class="row">
+                  <div class="col-sm-3" style="text-align:center;">
+                     <h6 class="card-title">Item</h6>
+                     <img src="https://s1.cdn.autoevolution.com/images/news/2013-harley-davidson-night-rod-special-spawn-of-darkness-photo-gallery-51000_1.jpg">
+                  </div>
+                  <div class="col-sm-3" style="text-align:center;">
+                          <h6 class="card-title">Price</h6>
+                           <span class="card-text">{{itemPrice}}</span>
+
+                  </div>
+                  <div class="col-sm-3" style="text-align:center;">
+                          <div>
+                              <h6 class="card-title">Quantity</h6>
+                              <div>
+                                <span  class="qnty" (click)="increment()"><i class="fa fa-plus-circle text-primary" aria-hidden="true"></i></span>
+                                <span style="padding-left:25px;" >{{counter}}</span>
+                                <span style="padding-left:25px;" class="qnty" (click)="decrement()"><i class="fa fa-minus-circle text-danger" aria-hidden="true"></i></span>
+                              </div>
+                          </div>
+                   </div>
+                   <div class="col-sm-3" style="text-align:center;">
+                          <h6 class="card-title">Total Price</h6>
+                          <p>{{counter * itemPrice}}</p>
+                          <div class="form-group">
+                            <button class="btn btn-success btn-block" (click)="checkout()">checkout</button>
+                          </div>
+                          <div class="form-group">
+                              <button class="btn btn-info btn-block" [routerLink]="['/folders']" >Save And GoBack</button>
+                            </div>
+                  </div>
+                 </div>
+          </div>
+        </div>
+        <div *ngIf="checkoutDiv" style="text-align: center;">
+       <h4>Thank You For Your Order</h4>
+      <h6>Please Reference Your Order No .999 at the counter</h6>
+        </div>
+
+</div>
