@@ -3,37 +3,141 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <input class="navbar-brand fullscreen" type="image"  src="../../../assets/images/cropped-ops-logo-sml-cent-276x88.png" style="width:95px;height:45px;">
         </nav>
-        <div class="card" *ngIf="!checkoutDiv">
+         <!-- <div class="card" *ngIf="favoritesDiv">
+            <div class="form-group ">
+                <button class="btn btn-info btn-sm float-right" [routerLink]="['/folders']" >Back</button>
+              </div>
+         <div class="card-body">
+         <div class="row">
+           <div class="col-sm-3">
+              <div class="hovereffect">
+                  <img class="img-responsive" src="http://www.fandung.com/8/2015/03/great-modern-design-of-the-tropical-islands-caribbean-that-has-nice-white-sands-can-add-the-beauty-inside-with-bue-beach-inside-make-it-seems-nice-spot-inside-657x411.jpg" alt="">
+                      <div class="overlay">
+                          <h2>Test 1</h2>
+                          <div style="text-align:center;">
+                              <span class="" style="padding-right:35px;" (click)="gotocart()">
+                                  <a ><i class="fa fa-shopping-cart text-primary fa-2x" aria-hidden="true"></i></a></span>
+                                  <span  style="padding-left:35px;" class=""><a ><i class="fa fa-trash text-danger fa-2x" aria-hidden="true"></i></a>
+                              </span>
+                          </div>
+
+                      </div>
+              </div>
+           </div>
+           <div class="col-sm-3">
+              <div class="hovereffect">
+                  <img class="img-responsive" src="https://i.pinimg.com/originals/36/56/a6/3656a66c3417c38b8175328c6396eeba.jpg" alt="">
+                      <div class="overlay">
+                          <h2>Bike 4</h2>
+                          <div style="text-align:center;">
+                              <span class="" style="padding-right:35px;" (click)="gotocart()">
+                                  <a><i class="fa fa-shopping-cart text-primary fa-2x" aria-hidden="true"></i></a></span>
+                                  <span  style="padding-left:35px;" class=""><a ><i class="fa fa-trash text-danger fa-2x" aria-hidden="true"></i></a>
+                              </span>
+                          </div>
+
+                      </div>
+              </div>
+           </div>
+           <div class="col-sm-3">
+              <div class="hovereffect">
+                  <img class="img-responsive" src="https://s1.cdn.autoevolution.com/images/news/2013-harley-davidson-night-rod-special-spawn-of-darkness-photo-gallery-51000_1.jpg" alt="">
+                      <div class="overlay">
+                          <h2>Bike 4</h2>
+                          <div style="text-align:center;">
+                              <span class="" style="padding-right:35px;" (click)="gotocart()">
+                                  <a ><i class="fa fa-shopping-cart text-primary fa-2x" aria-hidden="true"></i></a></span>
+                                  <span  style="padding-left:35px;" class=""><a ><i class="fa fa-trash text-danger fa-2x" aria-hidden="true"></i></a>
+                              </span>
+                          </div>
+
+                      </div>
+              </div>
+           </div>
+           <div class="col-sm-3">
+              <div class="hovereffect">
+                  <img class="img-responsive" src="https://d2uqfpnktc64mn.cloudfront.net/uploads/ckeditor_assets/pictures/18430/content_c1-Image-by-Kilian-Schonberger-The-Bridge-Brothers-Grimm-Wanderings-series.jpg" alt="">
+                      <div class="overlay">
+                          <h2>Bike 4</h2>
+                          <div style="text-align:center;">
+                              <span class="" style="padding-right:35px;" (click)="gotocart()">
+                                  <a ><i class="fa fa-shopping-cart text-primary fa-2x" aria-hidden="true"></i></a></span>
+                                  <span  style="padding-left:35px;" class=""><a ><i class="fa fa-trash text-danger fa-2x" aria-hidden="true"></i></a>
+                              </span>
+                          </div>
+
+                      </div>
+              </div>
+           </div>
+
+         </div>
+         </div>
+         </div> -->
+        <div class="card" *ngIf="cartDiv">
           <div class="card-body" >
               <div class="row">
-                  <div class="col-sm-3" style="text-align:center;">
-                     <h6 class="card-title">Item</h6>
-                     <img src="https://s1.cdn.autoevolution.com/images/news/2013-harley-davidson-night-rod-special-spawn-of-darkness-photo-gallery-51000_1.jpg">
-                  </div>
-                  <div class="col-sm-3" style="text-align:center;">
-                          <h6 class="card-title">Price</h6>
-                           <span class="card-text">{{itemPrice}}</span>
+                <div class="col-sm-8">
+                  <div class="card">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-sm-3" style="text-align:center;">
+                                  <h6 class="card-title">Item</h6>
+                                  <img src="https://s1.cdn.autoevolution.com/images/news/2013-harley-davidson-night-rod-special-spawn-of-darkness-photo-gallery-51000_1.jpg">
+                               </div>
+                               <div class="col-sm-3" style="text-align:center;">
+                                       <h6 class="card-title">Product List</h6>
+                                         <ul class="list-group">
+                                            <li class="list-group-item" (click)="getItems('4 × 5')">4 &times; 5</li>
+                                            <li class="list-group-item" (click)="getItems('6 × 7')">6 &times; 7</li>
+                                            <li class="list-group-item" (click)="getItems('8 × 9')">8 &times; 9</li>
+                                            <li class="list-group-item" (click)="getItems('25 × 60')">25 &times; 60</li>
+                                          </ul>
 
+
+                               </div>
+                               <div class="col-sm-4" style="text-align:center;">
+                                       <div>
+                                           <h6 class="card-title">No.of Items</h6>
+                                           <div class="card">
+                                              <div class="card-body" style="height: 100px; overflow-y: auto; ">
+                                                  <ul class="list-group" *ngFor='let prods of itemsArray let j =index;'>
+                                                      <li class="list-group-item" ><span>{{prods.name}} - </span><span><i class="fa fa-usd" aria-hidden="true">{{prods.price}} &nbsp; </i></span><span (click)="deleteprod(prods , j)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></span></li>
+                                                    </ul>
+                                               </div>
+                                           </div>
+
+
+                                           <!-- <div>
+                                             <span  class="qnty" (click)="increment()"><i class="fa fa-plus-circle text-primary" aria-hidden="true"></i></span>
+                                             <span style="padding-left:25px;" >{{counter}}</span>
+                                             <span style="padding-left:25px;" class="qnty" (click)="decrement()"><i class="fa fa-minus-circle text-danger" aria-hidden="true"></i></span>
+                                           </div> -->
+                                       </div>
+                                </div>
+                                <div class="col-sm-2" style="text-align:center;">
+                                   <div >
+                                      <h6 class="card-title">Delete Item</h6>
+                                      <span><i class="fa fa-trash fa-1x text-danger" aria-hidden="true"></i></span>
+                                   </div>
+                                </div>
+                          </div>
+                      </div>
                   </div>
-                  <div class="col-sm-3" style="text-align:center;">
-                          <div>
-                              <h6 class="card-title">Quantity</h6>
-                              <div>
-                                <span  class="qnty" (click)="increment()"><i class="fa fa-plus-circle text-primary" aria-hidden="true"></i></span>
-                                <span style="padding-left:25px;" >{{counter}}</span>
-                                <span style="padding-left:25px;" class="qnty" (click)="decrement()"><i class="fa fa-minus-circle text-danger" aria-hidden="true"></i></span>
-                              </div>
+
+                </div>
+                <div class="col-sm-4">
+                  <div class="card">
+                    <div class="card-body" style="text-align:center;">
+                        <h6 class="card-title">Total Price</h6>
+                        <p><i class="fa fa-usd" aria-hidden="true">{{totalval}}</i></p>
+                        <div class="form-group">
+                          <button class="btn btn-success btn-block" [disabled]="checkoutdisabled"  (click)="checkout()">checkout</button>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-info btn-block" [routerLink]="['/folders']" >Save And GoBack</button>
                           </div>
-                   </div>
-                   <div class="col-sm-3" style="text-align:center;">
-                          <h6 class="card-title">Total Price</h6>
-                          <p>{{counter * itemPrice}}</p>
-                          <div class="form-group">
-                            <button class="btn btn-success btn-block" (click)="checkout()">checkout</button>
-                          </div>
-                          <div class="form-group">
-                              <button class="btn btn-info btn-block" [routerLink]="['/folders']" >Save And GoBack</button>
-                            </div>
+                    </div>
+                  </div>
                   </div>
                  </div>
           </div>
