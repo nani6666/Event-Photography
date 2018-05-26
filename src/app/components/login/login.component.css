@@ -7,10 +7,14 @@
   display: block;
   margin: 0 auto;
   padding: 5px 10px;
-  font-size: 28px;
+  font-size: 12px;
   width: 50%;
 }
 
+.breadcrumb{
+  background-color: #F8F9FA;
+  font-size:16px;
+}
 
 #wrap {
   display: block;

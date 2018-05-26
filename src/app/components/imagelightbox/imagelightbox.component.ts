@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , AfterViewInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Slider } from 'ngx-slider';
 @Component({
@@ -6,7 +6,7 @@ import { Slider } from 'ngx-slider';
   templateUrl: './imagelightbox.component.html',
   styleUrls: ['./imagelightbox.component.css']
 })
-export class ImagelightboxComponent implements OnInit {
+export class ImagelightboxComponent implements OnInit , AfterViewInit {
    imgArr: any;
    modalImage: any;
    public slider = new Slider();
@@ -51,6 +51,9 @@ export class ImagelightboxComponent implements OnInit {
     });
 
     this.slider.items = slideItems;
+  }
+  ngAfterViewInit() {
+
   }
 
   lightbox(val) {

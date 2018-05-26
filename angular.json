@@ -26,6 +26,8 @@
               "src/styles.css"
             ],
             "scripts": [
+
+              "node_modules/virtual-keyboard-plugin/dist/virtual-keyboard.min.js"
             ]
           },
           "configurations": {
@@ -75,7 +77,10 @@
             "styles": [
               "styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "/node_modules/jquery/dist/jquery.slim.min.js",
+              "/src/assets/js/jkeyboard.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

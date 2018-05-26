@@ -2,6 +2,10 @@ img{
   width:100%;
 }
 
+.breadcrumb{
+  background-color: #F8F9FA;
+  font-size:16px;
+}
 .img:hover{
   color: #424242;
 -webkit-transition: all .3s ease-in;
@@ -19,4 +23,14 @@ transform: scale(1.15);
 .btn:focus,.btn:active:focus,.btn.active:focus,
 .btn.focus,.btn:active.focus,.btn.active.focus {
     outline: none;
+}
+
+:host ::ng-deep .slider-nav {
+  font-size: 1rem !important;
+  padding: 1rem !important;
+  cursor:pointer;
+}
+:host ::ng-deep .dots{
+cursor:pointer !important;
+outline:none !important;
 }

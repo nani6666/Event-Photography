@@ -74,69 +74,91 @@
          </div>
          </div> -->
         <div class="card" *ngIf="cartDiv">
+
           <div class="card-body" >
               <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                   <div class="card">
+                      <div class="row">
+                          <div class="col-sm-4" style="text-align:center;">
+                              <h6 class="card-title">Item</h6>
+                          </div>
+                          <div class="col-sm-4" style="text-align:center;">
+                              <h6 class="card-title">Product List</h6>
+                            </div>
+                            <div class="col-sm-4" style="text-align:center;">
+                                <h6 class="card-title">No.of Items</h6>
+                              </div>
+                          </div>
+                          </div>
+                          <div class="card">
+                          <a class=""  style="padding-left:58px;"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
                       <div class="card-body">
                           <div class="row">
-                              <div class="col-sm-3" style="text-align:center;">
-                                  <h6 class="card-title">Item</h6>
-                                  <img src="https://s1.cdn.autoevolution.com/images/news/2013-harley-davidson-night-rod-special-spawn-of-darkness-photo-gallery-51000_1.jpg">
+                              <div class="col-sm-4" style="text-align:center;">
+                                  <div class="hovereffect">
+                                      <img class="img-responsive" src="https://s1.cdn.autoevolution.com/images/news/2013-harley-davidson-night-rod-special-spawn-of-darkness-photo-gallery-51000_1.jpg" alt="">
+                                      <div class="overlay">
+                                         <a class="info" ><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                                      </div>
+                                  </div>
                                </div>
-                               <div class="col-sm-3" style="text-align:center;">
-                                       <h6 class="card-title">Product List</h6>
-                                         <ul class="list-group">
-                                            <li class="list-group-item" (click)="getItems('4 × 5')">4 &times; 5</li>
+                               <div class="col-sm-4" style="text-align:center;">
+
+                                         <div class="list-group">
+                                            <div class="row">
+                                              <div class="col-sm-6" style="padding-right:0px;">
+                                               <div class="list-group-item"(click)="getItems('4 × 5')">4 &times; 5</div>
+                                              </div>
+                                              <div class="col-sm-6" style="padding-left:0px;">
+                                                  <div class="list-group-item" (click)="getItems('6 × 7')">6 &times; 7</div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6" style="padding-right:0px;">
+                                                 <div class="list-group-item" (click)="getItems('8 × 9')">8 &times; 9</div>
+                                                </div>
+                                                <div class="col-sm-6" style="padding-left:0px;">
+                                                    <div class="list-group-item" (click)="getItems('25 × 60')">25 &times; 60</div>
+                                                </div>
+                                              </div>
+                                            <!-- <li class="list-group-item" (click)="getItems('4 × 5')">4 &times; 5</li>
                                             <li class="list-group-item" (click)="getItems('6 × 7')">6 &times; 7</li>
                                             <li class="list-group-item" (click)="getItems('8 × 9')">8 &times; 9</li>
-                                            <li class="list-group-item" (click)="getItems('25 × 60')">25 &times; 60</li>
-                                          </ul>
+                                            <li class="list-group-item" (click)="getItems('25 × 60')">25 &times; 60</li> -->
+                                         </div>
 
 
                                </div>
                                <div class="col-sm-4" style="text-align:center;">
                                        <div>
-                                           <h6 class="card-title">No.of Items</h6>
-                                           <div class="card">
-                                              <div class="card-body" style="height: 100px; overflow-y: auto; ">
+
+                                           <div class="">
+                                              <div class="" style="height: 195px; overflow-y: auto; ">
                                                   <ul class="list-group" *ngFor='let prods of itemsArray let j =index;'>
                                                       <li class="list-group-item" ><span>{{prods.name}} - </span><span><i class="fa fa-usd" aria-hidden="true">{{prods.price}} &nbsp; </i></span><span (click)="deleteprod(prods , j)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></span></li>
                                                     </ul>
                                                </div>
                                            </div>
-
-
-                                           <!-- <div>
-                                             <span  class="qnty" (click)="increment()"><i class="fa fa-plus-circle text-primary" aria-hidden="true"></i></span>
-                                             <span style="padding-left:25px;" >{{counter}}</span>
-                                             <span style="padding-left:25px;" class="qnty" (click)="decrement()"><i class="fa fa-minus-circle text-danger" aria-hidden="true"></i></span>
-                                           </div> -->
                                        </div>
-                                </div>
-                                <div class="col-sm-2" style="text-align:center;">
-                                   <div >
-                                      <h6 class="card-title">Delete Item</h6>
-                                      <span><i class="fa fa-trash fa-1x text-danger" aria-hidden="true"></i></span>
-                                   </div>
                                 </div>
                           </div>
                       </div>
                   </div>
 
                 </div>
-                <div class="col-sm-4">
-                  <div class="card">
-                    <div class="card-body" style="text-align:center;">
-                        <h6 class="card-title">Total Price</h6>
-                        <p><i class="fa fa-usd" aria-hidden="true">{{totalval}}</i></p>
-                        <div class="form-group">
-                          <button class="btn btn-success btn-block" [disabled]="checkoutdisabled"  (click)="checkout()">checkout</button>
+                <div class="col-sm-2">
+                    <div class="" style="text-align:center;">
+                      <div class="border border-secondary">
+                          <h6 class="card-title">Total Price</h6>
+                          <p><i class="fa fa-usd" aria-hidden="true">{{totalval}}</i></p>
+                      </div>
+                        <div class="form-group" style="padding-top:15px;">
+                          <button class="btn btn-success btn-sm" [disabled]="checkoutdisabled"  (click)="checkout()">checkout</button>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-info btn-block" [routerLink]="['/folders']" >Save And GoBack</button>
+                            <button class="btn btn-info btn-sm" routerLink="/folders" >Save And GoBack</button>
                           </div>
-                    </div>
                   </div>
                   </div>
                  </div>

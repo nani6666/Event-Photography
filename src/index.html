@@ -7,8 +7,10 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/jqueryKeyboard/jkeyboard.css">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+ <link href="assets/css/jqueryKeyboard/jkeyboard.css" rel="stylesheet" >
+  <!-- <link rel="stylesheet" href="../node_modules/virtual-keyboard-plugin/dist/virtual-keyboard.css" type="text/html"> -->
+  <!-- <script src="../node_modules/virtual-keyboard-plugin/dist/virtual-keyboard.min.js"></script> -->
 </head>
 <body >
 
@@ -38,10 +40,10 @@
        $('#getStarted').click(function(){
         fullscreen();
        });
-     $('#keyboard').jkeyboard({
-          layout: "english",
-          input: $('#search_field')
-        });
+    //  $('#keyboard').jkeyboard({
+    //       layout: "english",
+    //       input: $('#search_field')
+    //     });
       });
 
       function fullscreen() {

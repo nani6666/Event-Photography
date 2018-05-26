@@ -2,6 +2,11 @@
     <input class="navbar-brand fullscreen" type="image"  src="../../../assets/images/cropped-ops-logo-sml-cent-276x88.png" style="width:95px;height:45px;">
     </nav>
   <div class="container-fluid">
+      <!-- <input id="Id2" type="text" virtual-keyboard>
+      <div class="virtual-keyboard-hook" data-target-id="Id2" data-keyboard-mapping="azerty">
+        <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+       </div> -->
+
   <div class="row">
    <div class="col-md-3">
 
@@ -28,14 +33,68 @@
     <div class="modal-content ">
 <div class="card" >
   <div class="card-body keyboardss">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <div style="text-align: center;">
             <h5  class="text-primary">Please Enter your Name/ID</h5>
-            <input type="text" id="search_field">
-             <button class="btn btn-info">OK</button>
-             <div id="keyboard"></div>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="search_field" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                  <button class="btn btn-info">OK</button>
+              </div>
+            </div>
+             <div _ngcontent-c1="" id="keyboard">
+               <ul class="jkeyboard">
+                 <li class="jline">
+                   <ul>
+                     <li class="jkey letter">q</li>
+                     <li class="jkey letter">w</li>
+                     <li class="jkey letter">e</li>
+                     <li class="jkey letter">r</li>
+                     <li class="jkey letter">t</li>
+                     <li class="jkey letter">y</li>
+                     <li class="jkey letter">u</li>
+                     <li class="jkey letter">i</li>
+                     <li class="jkey letter">o</li>
+                     <li class="jkey letter">p</li>
+                   </ul>
+                 </li>
+                 <li class="jline">
+                   <ul>
+                     <li class="jkey letter">a</li>
+                     <li class="jkey letter">s</li>
+                     <li class="jkey letter">d</li>
+                     <li class="jkey letter">f</li>
+                     <li class="jkey letter">g</li>
+                     <li class="jkey letter">h</li>
+                     <li class="jkey letter">j</li>
+                     <li class="jkey letter">k</li>
+                     <li class="jkey letter">l</li>
+                   </ul>
+                 </li>
+                 <li class="jline">
+                   <ul>
+                     <li class="jkey shift">&nbsp;</li>
+                     <li class="jkey letter">z</li>
+                     <li class="jkey letter">x</li>
+                     <li class="jkey letter">c</li>
+                     <li class="jkey letter">v</li>
+                     <li class="jkey letter">b</li>
+                     <li class="jkey letter">n</li>
+                     <li class="jkey letter">m</li>
+                     <li class="jkey backspace">&nbsp;</li>
+                    </ul>
+                </li>
+                <li class="jline"><ul>
+                    <li class="jkey numeric_switch">123</li>
+                    <li class="jkey layout_switch">&nbsp;</li>
+                    <li class="jkey space">&nbsp;</li>
+                    <li class="jkey return">Enter</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
         </div>
 
   </div>

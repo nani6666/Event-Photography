@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as $ from 'jquery' ;
+declare var jQuery: any;
 @Component({
   selector: 'app-folders',
   templateUrl: './folders.component.html',
@@ -18,6 +20,10 @@ export class FoldersComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    jQuery('#keyboard').jkeyboard({
+      layout: 'english',
+      input: $('#search_field')
+    });
     this.eventsection = true ;
     this.gamesection = false ;
     this.thumbnailsSection =  false ;

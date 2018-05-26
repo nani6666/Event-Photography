@@ -11,7 +11,6 @@ import {LoginComponent} from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FoldersComponent } from './components/folders/folders.component';
 
-
 // Route Configuration
 export const routes: Routes = [
     { path: '', component: ImagelightboxComponent },
@@ -19,7 +18,7 @@ export const routes: Routes = [
     { path: 'event', component: ImagelightboxComponent },
     { path: 'cart', component: CartComponent },
     { path: 'signup', component: SignupComponent },
-    { path: 'folders', component: FoldersComponent },
+    { path: 'folders', component: FoldersComponent }
 
 ];
 

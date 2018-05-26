@@ -5,59 +5,46 @@
           <!-- <a class="d" href="#">Navbar</a> -->
       <div  aria-label="breadcrumb " *ngIf="eventsection">
       <ol class="breadcrumb arr-right">
-        <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()">Start</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Events</li>
+        <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()"><strong>Start</strong></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><strong>Events</strong></li>
       </ol>
        </div>
           <div  aria-label="breadcrumb " *ngIf="gamesection">
         <ol class="breadcrumb arr-right">
-            <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()">Start</a></li>
-            <li class="breadcrumb-item "><a class="text-primary" (click)="getevents()">Events</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Games</li>
+            <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()"><strong>Start</strong></a></li>
+            <li class="breadcrumb-item "><a class="text-primary" (click)="getevents()"><strong>Events</strong></a></li>
+          <li class="breadcrumb-item active" aria-current="page"><strong>Games</strong></li>
         </ol>
         </div>
         <div  aria-label="breadcrumb " *ngIf="thumbnailsSection">
             <ol class="breadcrumb arr-right">
-                <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()">Start</a></li>
-                <li class="breadcrumb-item "><a class="text-primary" (click)="getevents()">Events</a></li>
-                <li class="breadcrumb-item "><a class="text-primary" (click)="getgames(' ')">Games</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Thumbnails</li>
+                <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()"><strong>Start</strong></a></li>
+                <li class="breadcrumb-item "><a class="text-primary" (click)="getevents()"><strong>Events</strong></a></li>
+                <li class="breadcrumb-item "><a class="text-primary" (click)="getgames(' ')"><strong>Games</strong></a></li>
+              <li class="breadcrumb-item active" aria-current="page"><strong>Thumbnails</strong></li>
             </ol>
           </div>
               <div aria-label="breadcrumb " *ngIf="imageSection">
                   <ol class="breadcrumb arr-right">
-                      <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()">Start</a></li>
-                      <li class="breadcrumb-item "><a class="text-primary" (click)="getevents()">Events</a></li>
-                      <li class="breadcrumb-item "><a class="text-primary" (click)="getgames(' ')">Games</a></li>
-                      <li class="breadcrumb-item" ><a class="text-primary" (click)="getthumbanils(' ')">Thumbnails </a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Images</li>
+                      <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()"><strong>Start</strong></a></li>
+                      <li class="breadcrumb-item "><a class="text-primary" (click)="getevents()"><strong>Events</strong></a></li>
+                      <li class="breadcrumb-item "><a class="text-primary" (click)="getgames(' ')"><strong>Games</strong></a></li>
+                      <li class="breadcrumb-item" ><a class="text-primary" (click)="getthumbanils(' ')"><strong>Thumbnails</strong> </a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><strong>Images</strong></li>
                   </ol>
 
               </div>
       </nav>
-      <div class="row" style="padding-left:65px; margin-bottom:30px;">
-          <div class="col-sm-6">
-            <div class="row">
-                <div class="col-sm-4">
-                    <button class="btn btn-primary btn-block">Recall favorites</button>
-                </div>
-                <!-- <div class="col">
-                       <button>Recall favorites</button>
-                </div> -->
-              <div class="col-sm-4">
-                        <button  class="btn btn-warning btn-block">Prices</button>
-               </div>
-            </div>
-
-          </div>
-
+      <div class="" style=" margin-bottom:30px;padding-top:20px;text-align:center;">
+            <button  class="btn btn-secondary btn-small"  data-toggle="modal" data-target="#keyboardModal">Recall Favorites</button>
+            <button style="margin-left:20px;" type="button" class="btn btn-primary btn-small">Prices</button>
         </div>
 
 <div class="row" *ngIf="!thumbnailsSection">
-  <div class="col-sm-2">
+  <div class="col-sm-3">
 
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-6">
   <div class="card" *ngIf="eventsection">
    <div class="card-body" >
     <div style="height: 350px;overflow-y: auto;"  >
@@ -79,7 +66,7 @@
    </div>
   </div>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-3">
 
   </div>
 
@@ -105,7 +92,7 @@
   <div class="col-sm-3">
     <div class="card">
           <div class="card-body">
-              <div style="height: 350px;overflow-y: auto;"  >
+              <div style="height:433px; overflow-y: auto;"  >
               <ul class="list-group" *ngFor="let imgs of thumbnailsArray; let j = index">
                   <li class="list-group-item" > <img class="" (click)="getImages(imgs)" src="{{imgs.img}}" alt=""></li>
                 </ul>
@@ -114,15 +101,22 @@
     </div>
 
   </div>
-  <div class="col-sm-7">
+  <div class="col-sm-7"  style="text-align: right;">
+    <span class=""><i class="fa fa-heart text-danger"><span class="text-secondary">Add To Favorites</span></i></span>
     <div class="card">
    <div class="card-body">
-    <img class="img" src="{{imgitem}}">
+      <div class="hovereffect img">
+          <img class="img-responsive" src="{{imgitem}}" alt="">
+          <div class="overlay">
+            <h2>Add to Favorites</h2>
+             <a class="info"><span><i class="fa fa-heart text-danger"></i></span></a>
+          </div>
+      </div>
    </div>
     </div>
 
     </div>
-    <div class="col-sm-2">
+    <!-- <div class="col-sm-2">
         <div class="card">
        <div class="card-body">
        <div class="form-group">
@@ -133,7 +127,83 @@
         </div>
        </div>
         </div>
+      </div> -->
+</div>
+
+</div>
+<div class="modal fade" id="keyboardModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true "
+data-backdrop="static" data-keyboard="false">
+<div class="modal-dialog modal-lg " role="document " >
+  <div class="modal-content ">
+<div class="card" >
+<div class="card-body keyboardss">
+    <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div style="text-align: center;">
+          <h5  class="text-primary">Please Enter your Name/ID</h5>
+          <div class="input-group mb-3">
+              <input type="text" class="form-control" id="search_field" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                  <button class="btn btn-info">OK</button>
+              </div>
+            </div>
+           <div _ngcontent-c1="" id="keyboard">
+             <ul class="jkeyboard">
+               <li class="jline">
+                 <ul>
+                   <li class="jkey letter">q</li>
+                   <li class="jkey letter">w</li>
+                   <li class="jkey letter">e</li>
+                   <li class="jkey letter">r</li>
+                   <li class="jkey letter">t</li>
+                   <li class="jkey letter">y</li>
+                   <li class="jkey letter">u</li>
+                   <li class="jkey letter">i</li>
+                   <li class="jkey letter">o</li>
+                   <li class="jkey letter">p</li>
+                 </ul>
+               </li>
+               <li class="jline">
+                 <ul>
+                   <li class="jkey letter">a</li>
+                   <li class="jkey letter">s</li>
+                   <li class="jkey letter">d</li>
+                   <li class="jkey letter">f</li>
+                   <li class="jkey letter">g</li>
+                   <li class="jkey letter">h</li>
+                   <li class="jkey letter">j</li>
+                   <li class="jkey letter">k</li>
+                   <li class="jkey letter">l</li>
+                 </ul>
+               </li>
+               <li class="jline">
+                 <ul>
+                   <li class="jkey shift">&nbsp;</li>
+                   <li class="jkey letter">z</li>
+                   <li class="jkey letter">x</li>
+                   <li class="jkey letter">c</li>
+                   <li class="jkey letter">v</li>
+                   <li class="jkey letter">b</li>
+                   <li class="jkey letter">n</li>
+                   <li class="jkey letter">m</li>
+                   <li class="jkey backspace">&nbsp;</li>
+                  </ul>
+              </li>
+              <li class="jline"><ul>
+                  <li class="jkey numeric_switch">123</li>
+                  <li class="jkey layout_switch">&nbsp;</li>
+                  <li class="jkey space">&nbsp;</li>
+                  <li class="jkey return">Enter</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
       </div>
+
+</div>
+</div>
+  </div>
 </div>
 
 </div>

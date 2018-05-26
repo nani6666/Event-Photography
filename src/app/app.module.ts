@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing } from './app.routes';
 import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SliderModule } from 'ngx-slider';
@@ -12,7 +13,6 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FoldersComponent } from './components/folders/folders.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +29,8 @@ import { FoldersComponent } from './components/folders/folders.component';
     BrowserAnimationsModule,
     FormsModule, HttpModule,
     HttpClientModule,
-    SliderModule
+    SliderModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
