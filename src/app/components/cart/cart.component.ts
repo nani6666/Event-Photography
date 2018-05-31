@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RestcalllService } from '../../services/apis/restcalll.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -15,7 +16,8 @@ export class CartComponent implements OnInit {
   totalval: any;
   itemsArray: any;
   checkoutdisabled: boolean;
-  constructor(private router: Router) {
+  tokenval: any;
+  constructor(private router: Router , private servicecall: RestcalllService) {
     this.itemsArray = [];
     this.totalval = 0;
 
@@ -95,5 +97,14 @@ export class CartComponent implements OnInit {
        this.checkoutdisabled = false;
      }
   }
+
+  gettoken() {
+    this.servicecall.getCall('api/Authentication/Token').subscribe(data => {
+      const tokenObj = JSON.parse((<any>data)._body);
+      console.log(tokenObj);
+    } , err => {
+     console.log('Error');
+    });
+   }
 
 }

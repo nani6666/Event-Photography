@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RestcalllService } from '../../services/apis/restcalll.service';
 import * as $ from 'jquery' ;
 declare var jQuery: any;
 @Component({
@@ -16,10 +17,19 @@ export class FoldersComponent implements OnInit {
    thumbnailsArray: any;
    imgitem: any;
    gameArray: any ;
+   tokenval: any;
+   eventsval: any;
+   gamesval: any;
+   thumbnailsval: any;
+   inputval: any;
+   buttonsUser: boolean;
+   public serverIP = '192.168.0.101';
 
-  constructor(private router: Router) { }
+
+  constructor(private router: Router , private servicecall: RestcalllService) { }
 
   ngOnInit() {
+    // this.gettoken();
     jQuery('#keyboard').jkeyboard({
       layout: 'english',
       input: $('#search_field')
@@ -28,36 +38,16 @@ export class FoldersComponent implements OnInit {
     this.gamesection = false ;
     this.thumbnailsSection =  false ;
     this.imageSection = false;
-    this.eventsArray = ['Cras justo odio' , 'Dapibus ac facilisis in' , 'Morbi leo risus' ,
-                         'Porta ac consectetur ac' , 'Vestibulum at eros' , '123 ac'];
-     this.gameArray = ['one' , 'two', 'three' , 'four' , 'five' , 'six'];
-     this.thumbnailsArray = [
-      {
+    this.eventsArray = [];
+     this.gameArray = [];
+     this.thumbnailsArray = [];
 
-        'img': 'https://d21tktytfo9riy.cloudfront.net/wp-content/uploads/2016/02/09155708/AB2_gl_frg_optim.png',
-        'title': 'Sunrise'
-      }, {
-        // tslint:disable-next-line:max-line-length
-        'img': 'https://d2uqfpnktc64mn.cloudfront.net/uploads/ckeditor_assets/pictures/18430/content_c1-Image-by-Kilian-Schonberger-The-Bridge-Brothers-Grimm-Wanderings-series.jpg',
-        'title': 'Lake'
-      }, {
-        'img': 'https://i.pinimg.com/originals/36/56/a6/3656a66c3417c38b8175328c6396eeba.jpg',
-        'title': 'Ocean Sun set'
-      }, {
-        'img': 'http://latesthdwallpapers1.com/wp-content/uploads/2015/01/Nature-Landscapes-2.jpg',
-        'title': 'Beautiful Landscape1'
-      }, {
-        // tslint:disable-next-line:max-line-length
-        'img': 'http://www.fandung.com/8/2015/03/great-modern-design-of-the-tropical-islands-caribbean-that-has-nice-white-sands-can-add-the-beauty-inside-with-bue-beach-inside-make-it-seems-nice-spot-inside-657x411.jpg',
-        'title': 'Island'
-      },{
-        // tslint:disable-next-line:max-line-length
-        'img': 'https://s1.cdn.autoevolution.com/images/news/2013-harley-davidson-night-rod-special-spawn-of-darkness-photo-gallery-51000_1.jpg',
-        'title': 'Harley Davidson'
-      }
-
-
-     ];
+     this.getEventSApi();
+     if (localStorage.getItem('Id') !== null) {
+      this.buttonsUser =  false;
+     } else {
+      this.buttonsUser =  true;
+     }
    }
 
    getevents() {
@@ -65,23 +55,53 @@ export class FoldersComponent implements OnInit {
     this.gamesection = false ;
     this.thumbnailsSection =  false ;
     this.imageSection = false;
+    this.getEventSApi();
    }
    getgames(val) {
+    if (val == '') {
+      val =  this.eventsval ;
+    } else {
+     this.eventsval = val ;
+    }
     console.log(val);
     this.eventsection = false ;
     this.gamesection = true ;
     this.thumbnailsSection =  false ;
     this.imageSection = false;
+    this.servicecall.getCall('api/Folders/GetGames?evnt=' + this.eventsval).subscribe(data => {
+      //  console.log((<any>data)._body);
+       const obj = JSON.parse((<any>data)._body) ;
+       this.gameArray = obj.games;
+     //  console.log(obj.eventNames);
+     } , err => {
+
+     });
    }
    getthumbanils(val) {
+     console.log(val);
+     if (val == '') {
+       val =  this.gamesval ;
+     } else {
+      this.gamesval = val ;
+     }
     this.eventsection = false ;
     this.gamesection = false ;
     this.thumbnailsSection =  true ;
     this.imageSection = false;
+    this.servicecall.getCall('/api/Folders/GetThumbnails?evnt=' +  this.eventsval + '&game=' + this.gamesval).subscribe(data => {
+      //  console.log((<any>data)._body);&game=Default"
+       const obj = JSON.parse((<any>data)._body) ;
+       console.log(obj.images);
+       this.thumbnailsArray = obj.images;
+     //  console.log(obj.eventNames);
+     } , err => {
+
+     });
    }
 
    getImages(val) {
-     this.imgitem = val.img;
+     console.log(val);
+     this.imgitem = val;
     this.eventsection = false ;
     this.gamesection = false ;
     this.thumbnailsSection =  false ;
@@ -91,4 +111,79 @@ export class FoldersComponent implements OnInit {
   startnavigate() {
     this.router.navigate(['/login']);
   }
+
+  getEventSApi() {
+   this.servicecall.getCall('api/Folders/GetEvents').subscribe(data => {
+    //  console.log((<any>data)._body);
+     const obj = JSON.parse((<any>data)._body) ;
+     this.eventsArray = obj.eventNames;
+   //  console.log(obj.eventNames);
+   } , err => {
+
+   });
+  }
+
+  keyboardmodal() {
+    this.inputval = '';
+    console.log(localStorage.getItem('Id'));
+    if (localStorage.getItem('Id') !== null) {
+      this.buttonsUser =  false;
+    } else {
+
+      document.getElementById('keyboardclick').click();
+    }
+
+  }
+
+
+  addtoFavorites() {
+    document.getElementById('okbtn').setAttribute('data-dismiss' , 'modal');
+    const obj = {
+      'cartNameId': this.inputval,
+      'imagePath': this.imgitem
+    };
+    console.log(obj);
+    this.servicecall.postCall('api/Favorites/Create' , obj).subscribe(data => {
+      console.log(data);
+      localStorage.setItem('Id' , (<any>data).cartMasterId);
+    } , err => {
+      alert('Name Already Exits');
+      console.log('Error');
+     this.getfavorites();
+    });
+   }
+
+   logout() {
+     localStorage.removeItem('Id');
+   this.router.navigate(['/login']);
+   }
+
+  inserttofavroties() {
+    const obj = {
+      'cartMasterId': localStorage.getItem('Id') !== null ? localStorage.getItem('Id') : '' ,
+      'imagePath': 'string'
+    };
+    console.log(obj);
+    this.servicecall.postCall('api/Favorites/Create' , obj).subscribe(data => {
+      console.log(data);
+      localStorage.setItem('Id' , (<any>data).cartMasterId);
+    } , err => {
+      console.log('Error');
+    });
+  }
+
+  getfavorites() {
+   this.servicecall.getCall('api/Favorites/Get?cartNameId=' + this.inputval).subscribe(data => {
+     console.log((<any>data)._body);
+     if ((<any>data)._body !== ''){
+      this.buttonsUser =  false;
+     } else {
+      this.buttonsUser =  true;
+     }
+  } , err => {
+
+  });
+  }
+
+
 }

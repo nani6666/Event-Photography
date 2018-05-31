@@ -20,7 +20,7 @@
             <ol class="breadcrumb arr-right">
                 <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()"><strong>Start</strong></a></li>
                 <li class="breadcrumb-item "><a class="text-primary" (click)="getevents()"><strong>Events</strong></a></li>
-                <li class="breadcrumb-item "><a class="text-primary" (click)="getgames(' ')"><strong>Games</strong></a></li>
+                <li class="breadcrumb-item "><a class="text-primary" (click)="getgames('')"><strong>Games</strong></a></li>
               <li class="breadcrumb-item active" aria-current="page"><strong>Thumbnails</strong></li>
             </ol>
           </div>
@@ -28,16 +28,19 @@
                   <ol class="breadcrumb arr-right">
                       <li class="breadcrumb-item"><a class="text-primary" (click)="startnavigate()"><strong>Start</strong></a></li>
                       <li class="breadcrumb-item "><a class="text-primary" (click)="getevents()"><strong>Events</strong></a></li>
-                      <li class="breadcrumb-item "><a class="text-primary" (click)="getgames(' ')"><strong>Games</strong></a></li>
-                      <li class="breadcrumb-item" ><a class="text-primary" (click)="getthumbanils(' ')"><strong>Thumbnails</strong> </a></li>
+                      <li class="breadcrumb-item "><a class="text-primary" (click)="getgames('')"><strong>Games</strong></a></li>
+                      <li class="breadcrumb-item" ><a class="text-primary" (click)="getthumbanils('')"><strong>Thumbnails</strong> </a></li>
                     <li class="breadcrumb-item active" aria-current="page"><strong>Images</strong></li>
                   </ol>
 
               </div>
       </nav>
       <div class="" style=" margin-bottom:30px;padding-top:20px;text-align:center;">
-            <button  class="btn btn-secondary btn-small"  data-toggle="modal" data-target="#keyboardModal">Recall Favorites</button>
-            <button style="margin-left:20px;" type="button" class="btn btn-primary btn-small">Prices</button>
+            <button  type="button" class="btn btn-primary btn-small" data-toggle="modal" data-target="#pricesModal">Prices</button>
+            <button *ngIf="!buttonsUser" style="margin-left:20px;"  class="btn btn-secondary btn-small"  >View({{inputval}}) Favorites</button>
+            <button *ngIf="!buttonsUser" style="margin-left:20px;"  class="btn btn-secondary btn-small"  (click)="logout()" >Start over</button>
+            <button *ngIf="buttonsUser" style="margin-left:20px;"  id="keyboardclick" class="btn btn-secondary btn-small"  data-toggle="modal" data-target="#keyboardModal">Recall Favorites</button>
+
         </div>
 
 <div class="row" *ngIf="!thumbnailsSection">
@@ -76,8 +79,8 @@
       <h4 style="text-align:center;">Thumbnail Images</h4>
         <div class="row">
             <div class="col-sm-2" *ngFor="let imgs of thumbnailsArray; let j = index">
-              <div class="card" style="cursor:pointer;">
-                <img class="card-img-top img" (click)="getImages(imgs)" src="{{imgs.img}}" alt="Card image cap">
+              <div class="card" style="cursor:pointer;" style="height:150px;">
+                <img class="card-img-top img" (click)="getImages(imgs)" src="{{imgs}}" alt="Card image cap" width="100%" height="100%">
                 <!-- <div class="card-body">
                     <p class="card-text">{{imgs.title}}</p>
                 <div> -->
@@ -94,22 +97,22 @@
           <div class="card-body">
               <div style="height:433px; overflow-y: auto;"  >
               <ul class="list-group" *ngFor="let imgs of thumbnailsArray; let j = index">
-                  <li class="list-group-item" > <img class="" (click)="getImages(imgs)" src="{{imgs.img}}" alt=""></li>
+                  <li class="list-group-item" > <img class="" (click)="getImages(imgs)" src="{{imgs}}" alt="" width="100%" height="100%"></li>
                 </ul>
                 </div>
           </div>
     </div>
 
   </div>
-  <div class="col-sm-7"  style="text-align: right;">
-    <span class=""><i class="fa fa-heart text-danger"><span class="text-secondary">Add To Favorites</span></i></span>
+  <div class="col-sm-8">
+    <span class="" (click)="keyboardmodal();" style="cursor:pointer;"><i class="fa fa-heart text-danger"><span class="text-secondary">Add To Favorites</span></i></span>
     <div class="card">
    <div class="card-body">
       <div class="hovereffect img">
-          <img class="img-responsive" src="{{imgitem}}" alt="">
+          <img class="img-responsive" src="{{imgitem}}" alt="" width="100%" height="100%">
           <div class="overlay">
             <h2>Add to Favorites</h2>
-             <a class="info"><span><i class="fa fa-heart text-danger"></i></span></a>
+             <a class="info"  style="cursor:pointer;" (click)="keyboardmodal();" ><span><i class="fa fa-heart text-danger"></i></span></a>
           </div>
       </div>
    </div>
@@ -143,9 +146,9 @@ data-backdrop="static" data-keyboard="false">
       <div style="text-align: center;">
           <h5  class="text-primary">Please Enter your Name/ID</h5>
           <div class="input-group mb-3">
-              <input type="text" class="form-control" id="search_field" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" id="search_field"  [(ngModel)]="inputval" [ngModelOptions]="{standalone: true}" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                  <button class="btn btn-info">OK</button>
+                  <button class="btn btn-info" id="okbtn" (click)="addtoFavorites()" >OK</button>
               </div>
             </div>
            <div _ngcontent-c1="" id="keyboard">
@@ -207,3 +210,21 @@ data-backdrop="static" data-keyboard="false">
 </div>
 
 </div>
+
+<div class="modal fade" id="pricesModal" tabindex="-1" role="dialog" aria-labelledby="pricesModalLabel" aria-hidden="true "
+data-backdrop="static" data-keyboard="false">
+<div class="modal-dialog modal-lg " role="document " >
+  <div class="modal-content ">
+<div class="card" >
+<div class="card-body">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+</div>
+</div>
+  </div>
+</div>
+
+</div>
+
