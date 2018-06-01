@@ -23,10 +23,12 @@ export class FoldersComponent implements OnInit {
    thumbnailsval: any;
    inputval: any;
    buttonsUser: boolean;
+   productObj: any;
    public serverIP = '192.168.0.101';
 
 
-  constructor(private router: Router , private servicecall: RestcalllService) { }
+  constructor(private router: Router , private servicecall: RestcalllService) {
+  }
 
   ngOnInit() {
     // this.gettoken();
@@ -43,11 +45,13 @@ export class FoldersComponent implements OnInit {
      this.thumbnailsArray = [];
 
      this.getEventSApi();
+     this.getproducts();
      if (localStorage.getItem('Id') !== null) {
       this.buttonsUser =  false;
      } else {
       this.buttonsUser =  true;
      }
+    // this.keyboardmodalfun();
    }
 
    getevents() {
@@ -123,13 +127,13 @@ export class FoldersComponent implements OnInit {
    });
   }
 
-  keyboardmodal() {
-    this.inputval = '';
+  keyboardmodalfun() {
     console.log(localStorage.getItem('Id'));
     if (localStorage.getItem('Id') !== null) {
       this.buttonsUser =  false;
+      this.inserttofavroties();
     } else {
-
+      this.inputval = '';
       document.getElementById('keyboardclick').click();
     }
 
@@ -145,8 +149,10 @@ export class FoldersComponent implements OnInit {
     console.log(obj);
     this.servicecall.postCall('api/Favorites/Create' , obj).subscribe(data => {
       console.log(data);
+      localStorage.setItem('name' , this.inputval);
       localStorage.setItem('Id' , (<any>data).cartMasterId);
     } , err => {
+      localStorage.setItem('name' , this.inputval);
       alert('Name Already Exits');
       console.log('Error');
      this.getfavorites();
@@ -154,6 +160,7 @@ export class FoldersComponent implements OnInit {
    }
 
    logout() {
+     localStorage.removeItem('name');
      localStorage.removeItem('Id');
    this.router.navigate(['/login']);
    }
@@ -175,7 +182,7 @@ export class FoldersComponent implements OnInit {
   getfavorites() {
    this.servicecall.getCall('api/Favorites/Get?cartNameId=' + this.inputval).subscribe(data => {
      console.log((<any>data)._body);
-     if ((<any>data)._body !== ''){
+     if ((<any>data)._body !== '') {
       this.buttonsUser =  false;
      } else {
       this.buttonsUser =  true;
@@ -185,5 +192,13 @@ export class FoldersComponent implements OnInit {
   });
   }
 
+  getproducts() {
+   this.servicecall.getCall('api/Products/Get').subscribe(data => {
+      this.productObj = JSON.parse((<any>data)._body);
+      console.log(this.productObj);
+   } , err => {
+
+   });
+  }
 
 }

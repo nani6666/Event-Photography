@@ -17,6 +17,8 @@ export class CartComponent implements OnInit {
   itemsArray: any;
   checkoutdisabled: boolean;
   tokenval: any;
+  favorties: any;
+  productobj: any;
   constructor(private router: Router , private servicecall: RestcalllService) {
     this.itemsArray = [];
     this.totalval = 0;
@@ -30,6 +32,7 @@ export class CartComponent implements OnInit {
     this.counter = 0 ;
     this.itemPrice = 100;
     this.checkoutbtn();
+    this.getfavorites();
   }
 
   increment() {
@@ -98,13 +101,24 @@ export class CartComponent implements OnInit {
      }
   }
 
-  gettoken() {
-    this.servicecall.getCall('api/Authentication/Token').subscribe(data => {
+  // gettoken() {
+  //   this.servicecall.getCall('api/Authentication/Token').subscribe(data => {
+  //     const tokenObj = JSON.parse((<any>data)._body);
+  //     console.log(tokenObj);
+  //   } , err => {
+  //    console.log('Error');
+  //   });
+  //  }
+
+  getfavorites() {
+    const nameval = localStorage.getItem('name');
+     this.servicecall.getCall('api/Favorites/Get?cartNameId=' + nameval ).subscribe(data => {
       const tokenObj = JSON.parse((<any>data)._body);
-      console.log(tokenObj);
+      this.favorties = tokenObj.cartFavs ;
+      console.log(this.favorties);
     } , err => {
      console.log('Error');
     });
-   }
+  }
 
 }
