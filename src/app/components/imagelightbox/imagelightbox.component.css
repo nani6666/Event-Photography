@@ -38,8 +38,7 @@ outline:none !important;
 #slideshow {
   margin: 50px auto;
   position: relative;
-  width: 240px;
-  height: 240px;
+  height: 400px;
   padding: 10px;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
@@ -51,3 +50,5 @@ outline:none !important;
   right: 10px;
   bottom: 10px;
 }
+
+

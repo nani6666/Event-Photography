@@ -92,43 +92,29 @@
                           </div>
                           </div>
                           <div class="card"  *ngFor="let favs of favorties; let j=index;">
-                          <a class=""  style="padding-left:58px;"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                          <a class=""  style="padding-left:58px;" (click)="deletefavorite(favs)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
                       <div class="card-body">
                           <div class="row">
                               <div class="col-sm-4" style="text-align:center;">
+                                <div class="card" style="height: 195px;">
                                   <div class="hovereffect">
-                                      <img class="img-responsive" src="{{favs.imagePath}}" alt="">
+                                      <img class="img-responsive" src="{{favs.imagePath}}" alt="" width="100%" height="100%">
                                       <div class="overlay">
-                                         <a class="info" ><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                                         <a class="info" (click)="deletefavorite(favs)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
                                       </div>
+                                    </div>
                                   </div>
                                </div>
                                <div class="col-sm-4" style="text-align:center;">
-
-                                         <div class="list-group">
-                                            <div class="row">
-                                              <div class="col-sm-6" style="padding-right:0px;">
-                                               <div class="list-group-item"(click)="getItems('4 × 5')">4 &times; 5</div>
-                                              </div>
-                                              <div class="col-sm-6" style="padding-left:0px;">
-                                                  <div class="list-group-item" (click)="getItems('6 × 7')">6 &times; 7</div>
-                                              </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6" style="padding-right:0px;">
-                                                 <div class="list-group-item" (click)="getItems('8 × 9')">8 &times; 9</div>
-                                                </div>
-                                                <div class="col-sm-6" style="padding-left:0px;">
-                                                    <div class="list-group-item" (click)="getItems('25 × 60')">25 &times; 60</div>
-                                                </div>
-                                              </div>
-                                            <!-- <li class="list-group-item" (click)="getItems('4 × 5')">4 &times; 5</li>
-                                            <li class="list-group-item" (click)="getItems('6 × 7')">6 &times; 7</li>
-                                            <li class="list-group-item" (click)="getItems('8 × 9')">8 &times; 9</li>
-                                            <li class="list-group-item" (click)="getItems('25 × 60')">25 &times; 60</li> -->
-                                         </div>
-
-
+                                        <div style="height: 195px; overflow-y: auto; ">
+                                            <ul class="list-group"    *ngFor="let prods of productobj.products; let j=index;">
+                                                <li class="list-group-item"(click)="getItems(prods)">{{prods.descriptionShort}}</li>
+                                             <!-- <li class="list-group-item" (click)="getItems('4 × 5')">4 &times; 5</li>
+                                             <li class="list-group-item" (click)="getItems('6 × 7')">6 &times; 7</li>
+                                             <li class="list-group-item" (click)="getItems('8 × 9')">8 &times; 9</li>
+                                             <li class="list-group-item" (click)="getItems('25 × 60')">25 &times; 60</li> -->
+                                          </ul>
+                                        </div>
                                </div>
                                <div class="col-sm-4" style="text-align:center;">
                                        <div>
